@@ -5,7 +5,7 @@
   "exports": {
     ".": "./src/index.mjs",
     "./package.json": "./package.json",
-    "./runtime": "./node_modules/@vipen/js-runtime/dist/node.mjs"
+    "./runtime": "./src/runtime/node.mjs"
   },
   "author": "Anio Software <info@anio.software>",
   "license": "MIT",
@@ -30,5 +30,8 @@
   ],
   "devDependencies": {
     "@vipen/js-runtime": "^0.4.1"
+  },
+  "scripts": {
+    "prepare": "./prepare.sh"
   }
 }
