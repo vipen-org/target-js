@@ -1,0 +1,33 @@
+{
+  "name": "@vipen/target-js",
+  "version": "0.0.1",
+  "description": ".",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./package.json": "./package.json",
+    "./runtime": "./node_modules/@vipen/js-runtime/dist/node.mjs"
+  },
+  "author": "Anio Software <info@anio.software>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vipen-org/vipen.git"
+  },
+  "dependencies": {
+    "@anio-js-foundation/alphabet-identifier-generator": "^1.0.0",
+    "@anio-js-foundation/create-modifier-function": "^2.0.0",
+    "@anio-js-foundation/create-named-anonymous-function": "^2.0.0",
+    "@anio-js-foundation/generate-object-literal": "^1.0.0",
+    "@anio-js-foundation/strip-suffix": "^3.0.1",
+    "@anio-node-foundation/fs-scandir": "^2.0.1",
+    "@anio-node-foundation/fs-utils": "^2.2.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@vipen/js-runtime": "^0.4.1",
+    "rollup": "^4.13.0"
+  },
+  "bundledDependencies": [
+    "@anio-js-foundation/create-modifier-function",
+    "@anio-js-foundation/create-named-anonymous-function",
+    "@vipen/js-runtime"
+  ]
+}
