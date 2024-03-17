@@ -11,7 +11,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vipen-org/vipen.git"
+    "url": "git+https://github.com/vipen-org/target-js.git"
   },
   "dependencies": {
     "@anio-js-foundation/alphabet-identifier-generator": "^1.0.0",
