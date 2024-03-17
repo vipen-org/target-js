@@ -22,12 +22,13 @@
     "@anio-node-foundation/fs-scandir": "^2.0.1",
     "@anio-node-foundation/fs-utils": "^2.2.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@vipen/js-runtime": "^0.4.1",
     "rollup": "^4.13.0"
   },
   "bundledDependencies": [
     "@anio-js-foundation/create-modifier-function",
-    "@anio-js-foundation/create-named-anonymous-function",
-    "@vipen/js-runtime"
-  ]
+    "@anio-js-foundation/create-named-anonymous-function"
+  ],
+  "devDependencies": {
+    "@vipen/js-runtime": "^0.4.1"
+  }
 }
