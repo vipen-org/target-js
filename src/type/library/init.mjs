@@ -16,7 +16,9 @@ export default async function(context) {
 	const library_functions = await getExportedLibraryFunctions(context)
 	const sub_modules = determineSubModules(library_functions)
 
-	let js_runtime_data = {}
+	let js_runtime_data = {
+		resources: context.target.data.resources
+	}
 
 	context.autogenerate.addFile(`library.mjs`, generateLibraryFile, library_functions)
 	context.autogenerate.addFile(`dict.mjs`, generateDictFile, library_functions)
