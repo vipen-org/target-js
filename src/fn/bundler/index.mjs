@@ -45,9 +45,9 @@ export default async function(context, js_runtime_data, {entry, output}) {
 		plugins: [plugin(), resolve()],
 
 		onLog(level, error, handler) {
-			print(
-				`    [${level}] rollup says ${error.message}\n`
-			)
+			//print(
+			//	`    [${level}] rollup says ${error.message}\n`
+			//)
 		}
 	}
 
