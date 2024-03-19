@@ -3,7 +3,7 @@ import groupedImport from "../../../../fn/codegenerator/groupedImport.mjs"
 import namedExports from "../../../../fn/codegenerator/namedExports.mjs"
 import defaultExportObject from "../../../../fn/codegenerator/defaultExportObject.mjs"
 
-//import path from "node:path"
+import path from "node:path"
 import fs from "node:fs/promises"
 
 export default async function(file_path, js_runtime_data, library_functions, sub_module) {
@@ -60,5 +60,7 @@ export default async function(file_path, js_runtime_data, library_functions, sub
 
 	source += "\n"
 
-	await fs.writeFile(`/tmp/vipen/${sub_module}.mjs`, source)
+	const absolute_path = path.join(this.root, "build", file_path)
+
+	await fs.writeFile(absolute_path, source)
 }
