@@ -5,7 +5,13 @@ import nodeFsFindNearestFile from "@anio-node-foundation/fs-find-nearest-file"
 import process from "node:process"
 import path from "node:path"
 
-const vipen_config_path = await nodeFsFindNearestFile("vipen.config.mjs", path.dirname(process.argv[1]))
+//
+// project root is deduced from the script path present in
+// process.argv[1]
+//
+const vipen_config_path = await nodeFsFindNearestFile(
+	"vipen.config.mjs", path.dirname(process.argv[1])
+)
 
 if (!vipen_config_path) {
 	throw new Error(
