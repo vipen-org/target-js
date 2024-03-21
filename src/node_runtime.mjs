@@ -9,7 +9,8 @@ const vipen_config_path = await nodeFsFindNearestFile("vipen.config.mjs", path.d
 
 if (!vipen_config_path) {
 	throw new Error(
-		`Unable to locate vipen.config.mjs file. Are you sure it is present in the project root?`
+		`Unable to locate vipen.config.mjs file. ` +
+		`Please make sure vipen.config.mjs file is placed in the project root.`
 	)
 }
 
