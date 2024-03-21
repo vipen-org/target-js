@@ -4,7 +4,7 @@
   "description": ".",
   "exports": {
     ".": "./src/node_runtime.mjs",
-    "./api": "./src/index.mjs",
+    "./vipen-integration": "./src/index.mjs",
     "./package.json": "./package.json"
   },
   "author": "Anio Software <info@anio.software>",
