@@ -24,6 +24,7 @@ const runtime = initializeRuntimeFromData(runtime_data)
 export function loadResource(...args) { return runtime.loadResource(...args); }
 export function loadProjectPackageJSON() { return runtime.loadProjectPackageJSON(); }
 export function loadVipenConfiguration() { return runtime.loadVipenConfiguration(); }
+export function createDefaultContext() { return runtime.createDefaultContext(); }
 
 export default {
 	loadResource,
