@@ -11,7 +11,7 @@ export default async function(file_path, library_functions) {
 	let grouped_import = [], named_exports = [], default_export = []
 
 	source += `import ${generator.insert("dict")} from "./dict.mjs"\n`
-	source += `import ${generator.insert("importWithContextAsync")} from "./importWithContextAsync.mjs"\n`
+	source += `import ${generator.insert("importWithContext")} from "./importWithContext.mjs"\n`
 
 	let push = (o, imp = true) => {
 		if (imp) grouped_import.push(o)
@@ -27,8 +27,8 @@ export default async function(file_path, library_functions) {
 	}, false)
 
 	push({
-		key: "importWithContextAsync",
-		value: generator.lookup("importWithContextAsync")
+		key: "importWithContext",
+		value: generator.lookup("importWithContext")
 	}, false)
 
 	push({

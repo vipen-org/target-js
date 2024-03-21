@@ -49,7 +49,7 @@ export default async function(file_path, library_functions) {
 		pad_to_longest_key: true
 	})
 
-	source += `import {createDefaultContextAsync} from "@vipen/target-js/runtime"\n`
+	source += `import {createDefaultContext} from "@vipen/target-js/runtime"\n`
 
 	source += groupedImport("./library.mjs", grouped_import, {
 		pad_to_longest_key: true,
@@ -58,13 +58,13 @@ export default async function(file_path, library_functions) {
 
 	source += "\n\n"
 
-	source += "export default async function importWithContextAsync(plugs = {}, new_context = null) {\n"
+	source += "export default function importWithContext(plugs = {}, new_context = null) {\n"
 
 	source += `    let library_context = new_context\n\n`
 
 	source += `    /* Context is created here so every function has the same context */\n`
 	source += `    if (library_context === null) {\n`
-	source += `        library_context = await createDefaultContextAsync()\n`
+	source += `        library_context = createDefaultContext()\n`
 	source += `    }\n\n`
 
 	source += `    /* Plugs are set here so every function has the same context */\n`
@@ -76,7 +76,7 @@ export default async function(file_path, library_functions) {
 	source += `${lib};\n`
 
 	source += `\n${dict};\n`
-	source += `\n    library.importWithContextAsync = importWithContextAsync;\n`
+	source += `\n    library.importWithContext = importWithContext;\n`
 	source += `    library.getUsedDefaultContext = function getUsedDefaultContext() { return library_context; };\n`
 	source += `\n    return library;\n`
 	source += "}\n"

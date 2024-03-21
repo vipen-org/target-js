@@ -4,7 +4,7 @@ import determineSubModules from "./fn/determineSubModules.mjs"
 // autogenerators
 import generateLibraryFile from "./fn/autogenerator/libraryFile.mjs"
 import generateDictFile from "./fn/autogenerator/dictFile.mjs"
-import generateImportWithContextAsyncFile from "./fn/autogenerator/importWithContextAsyncFile.mjs"
+import generateImportWithContextFile from "./fn/autogenerator/importWithContextFile.mjs"
 import generateIndexFile from "./fn/autogenerator/indexFile.mjs"
 import generateSupportFile from "./fn/autogenerator/supportFile.mjs"
 
@@ -22,7 +22,7 @@ export default async function(context) {
 
 	context.autogenerate.addFile(`library.mjs`, generateLibraryFile, library_functions)
 	context.autogenerate.addFile(`dict.mjs`, generateDictFile, library_functions)
-	context.autogenerate.addFile(`importWithContextAsync.mjs`, generateImportWithContextAsyncFile, library_functions)
+	context.autogenerate.addFile(`importWithContext.mjs`, generateImportWithContextFile, library_functions)
 	context.autogenerate.addFile(`index.mjs`, generateIndexFile, library_functions)
 
 	for (const support_file of [

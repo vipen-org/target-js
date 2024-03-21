@@ -66,14 +66,14 @@ function addFunction(fn, generator) {
 export default async function(path, library_functions) {
 	let source = ``
 
-	source += `import {createDefaultContextAsync} from "@vipen/target-js/runtime"
+	source += `import {createDefaultContext} from "@vipen/target-js"
 import wrapFactory from "./support_files/wrapFactory.mjs"
 import wrapFunction from "./support_files/wrapFunction.mjs"
 
 `
 
 	source += `/* Module's default context */
-const _module_default_context = await createDefaultContextAsync()
+const _module_default_context = createDefaultContext()
 
 export function getUsedDefaultContext() {
 	return _module_default_context

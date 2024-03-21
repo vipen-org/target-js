@@ -1,4 +1,4 @@
-import {createDefaultContextAsync} from "@vipen/target-js/runtime"
+import {createDefaultContext} from "@vipen/target-js"
 import createNamedAnonymousFunction from "./createNamedAnonymousFunction.mjs"
 import wrapFunction from "./wrapFunction.mjs"
 
@@ -7,11 +7,11 @@ import wrapFunction from "./wrapFunction.mjs"
 // If no context was given, a new one will be created.
 //
 export default function(fn_name, factory) {
-	return createNamedAnonymousFunction(`${fn_name}FactoryAsync`, async (plugs = {}, new_context = null) => {
+	return createNamedAnonymousFunction(`${fn_name}Factory`, (plugs = {}, new_context = null) => {
 		let context = new_context
 
 		if (context === null) {
-			context = await createDefaultContextAsync()
+			context = createDefaultContext()
 		}
 
 		// plugs = null is just to indicate that plugs aren't used
