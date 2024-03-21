@@ -72,7 +72,7 @@ import wrapFunction from "./support_files/wrapFunction.mjs"
 
 `
 
-	source += `/* Module's default context */
+	source += `// Module's default context
 const _module_default_context = createDefaultContext()
 
 export function getUsedDefaultContext() {
@@ -84,7 +84,7 @@ export function getUsedDefaultContext() {
 	const generator = new AlphabetIdentifierGenerator()
 
 	for (const fn of library_functions) {
-		source += `/* ${fn.canonical_path} */\n`
+		source += `// ${fn.canonical_path}\n`
 		source += addFunction(fn, generator)
 		source += "\n"
 	}

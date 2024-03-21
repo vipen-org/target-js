@@ -62,12 +62,12 @@ export default async function(file_path, library_functions) {
 
 	source += `    let library_context = new_context\n\n`
 
-	source += `    /* Context is created here so every function has the same context */\n`
+	source += `    // Context is created here so every function has the same context\n`
 	source += `    if (library_context === null) {\n`
 	source += `        library_context = createDefaultContext()\n`
 	source += `    }\n\n`
 
-	source += `    /* Plugs are set here so every function has the same context */\n`
+	source += `    // Plugs are set here so every function has the same context\n`
 
 	source += `    for (const key in plugs) {\n`
 	source += `        library_context.plugs[key] = plugs[key];\n`

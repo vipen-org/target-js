@@ -38,7 +38,7 @@ export default function(list, {
 
 			str += `export const ${key}${padding} = ${value};\n`
 		} else {
-			str += `/* ${entry} */\n`
+			str += `// ${entry}\n`
 		}
 	}
 
