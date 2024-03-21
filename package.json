@@ -1,7 +1,7 @@
 {
   "name": "@vipen/target-js",
   "version": "0.0.4",
-  "description": ".",
+  "description": "Tools needed to build javascript targets.",
   "exports": {
     ".": "./src/node_runtime.mjs",
     "./vipen-integration": "./src/index.mjs",
