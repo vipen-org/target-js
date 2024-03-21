@@ -30,5 +30,6 @@ export function createDefaultContext() { return runtime.createDefaultContext(); 
 export default {
 	loadResource,
 	loadProjectPackageJSON,
-	loadVipenConfiguration
+	loadVipenConfiguration,
+	createDefaultContext
 }
