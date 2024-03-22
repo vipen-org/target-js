@@ -20,6 +20,9 @@ export default function(fn_name, fn_def) {
 		return createNamedAnonymousFunction(`${fn_name}`, fn_def)
 	}
 
+	//
+	// todo: return named function
+	//
 	return createModifierFunction(
 		fn_def.fn,
 		fn_def.modifiers
