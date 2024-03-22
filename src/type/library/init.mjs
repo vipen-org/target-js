@@ -37,7 +37,7 @@ export default async function(context) {
 	context.build.addFile(`library.mjs`, buildLibraryFile, js_runtime_data)
 
 	for (const sub_module of sub_modules) {
-		context.build.addFile(`submodule/${sub_module}.mjs`, buildSubModuleFile, js_runtime_data, library_functions, sub_module)
+		context.build.addFile(`submodule/${sub_module}.mjs`, buildSubModuleFile, library_functions, sub_module)
 	}
 
 	//state.files.autogenerate.push(["NOTICE.txt", createNoticeFile, {autogen_warning_comment: false}])

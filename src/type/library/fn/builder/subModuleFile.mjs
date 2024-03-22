@@ -6,7 +6,7 @@ import defaultExportObject from "../../../../fn/codegenerator/defaultExportObjec
 import path from "node:path"
 import fs from "node:fs/promises"
 
-export default async function(file_path, js_runtime_data, library_functions, sub_module) {
+export default async function(file_path, library_functions, sub_module) {
 	const generator = new AlphabetIdentifierGenerator()
 
 	let source = ""
