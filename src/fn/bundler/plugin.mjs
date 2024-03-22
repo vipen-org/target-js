@@ -16,6 +16,7 @@ async function loadVirtualModule(context, js_runtime_data) {
 	virtual_module += `const runtime = initializeRuntimeFromData(runtime_data);\n`
 
 	for (const method of [
+		"getRuntimeVersion",
 		"loadResource",
 		"loadProjectPackageJSON",
 		"loadVipenConfiguration",
