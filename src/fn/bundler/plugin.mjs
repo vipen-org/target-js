@@ -15,15 +15,25 @@ async function loadVirtualModule(context, js_runtime_data) {
 	virtual_module += `import {initializeRuntimeFromData} from "@virt-vipen/js-and-web-runtime/bundle"\n`
 	virtual_module += `const runtime = initializeRuntimeFromData(runtime_data);\n`
 
-	for (const method of [
+	const runtime_methods = [
 		"getRuntimeVersion",
 		"loadResource",
 		"loadProjectPackageJSON",
 		"loadVipenConfiguration",
 		"createDefaultContext"
-	]) {
+	]
+
+	for (const method of runtime_methods) {
 		virtual_module += `export function ${method}(...args) { return runtime.${method}(...args); }\n`
 	}
+
+	virtual_module += `export default {\n`
+
+	for (const method of runtime_methods) {
+		virtual_module += `    ${method},\n`
+	}
+
+	virtual_module += `}\n`
 
 	return virtual_module
 }
