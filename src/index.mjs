@@ -9,5 +9,17 @@ export async function initializeTarget(context) {
 		case "library": {
 			await initLibraryProject(context)
 		} break
+
+		case "app": {
+			//await initAppProject(context)
+		} break
+
+		case "package": {
+			//await initPackageProject(context)
+		} break
+
+		case "class": {
+			//await initClassProject(context)
+		} break
 	}
 }
