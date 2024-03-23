@@ -59,7 +59,9 @@ export default async function(file_path, library_functions) {
 	source += `\n`
 	source += `\n`
 
-	source += namedExports(named_exports)
+	source += namedExports(named_exports, {
+		pad_to_longest_key: true
+	})
 
 	source += `\n`
 
