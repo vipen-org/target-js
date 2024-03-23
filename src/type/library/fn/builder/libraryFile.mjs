@@ -1,8 +1,8 @@
 import runBundler from "./../../../../fn/bundler/index.mjs"
 
-export default async function(file_path, js_runtime_data) {
+export default async function(file_path) {
 	await runBundler(
-		this, js_runtime_data, {
+		this, {
 			entry: "src/auto/library.mjs",
 			output: "build/library.mjs"
 		}

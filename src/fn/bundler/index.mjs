@@ -3,8 +3,8 @@ import {rollup} from "rollup"
 import resolve from "@rollup/plugin-node-resolve"
 import rollupPluginFactory from "./plugin.mjs"
 
-export default async function(context, js_runtime_data, {entry, output}) {
-	const plugin = rollupPluginFactory(context, js_runtime_data)
+export default async function(context, {entry, output}) {
+	const plugin = rollupPluginFactory(context)
 
 	const rollup_options = {
 		input: entry,

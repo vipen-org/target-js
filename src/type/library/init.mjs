@@ -16,10 +16,6 @@ export default async function(context) {
 	const library_functions = await getExportedLibraryFunctions(context)
 	const sub_modules = determineSubModules(library_functions)
 
-	let js_runtime_data = {
-		resources: context.target.data.resources
-	}
-
 	context.autogenerate.addFile(`library.mjs`, generateLibraryFile, library_functions)
 	context.autogenerate.addFile(`dict.mjs`, generateDictFile, library_functions)
 	context.autogenerate.addFile(`importWithContext.mjs`, generateImportWithContextFile, library_functions)
@@ -34,7 +30,7 @@ export default async function(context) {
 		context.autogenerate.addFile(`support_files/${support_file}`, generateSupportFile, support_file)
 	}
 
-	context.build.addFile(`library.mjs`, buildLibraryFile, js_runtime_data)
+	context.build.addFile(`library.mjs`, buildLibraryFile)
 
 	for (const sub_module of sub_modules) {
 		context.build.addFile(`submodule/${sub_module}.mjs`, buildSubModuleFile, library_functions, sub_module)
