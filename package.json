@@ -29,9 +29,5 @@
   "bundledDependencies": [
     "@anio-js-foundation/create-modifier-function",
     "@anio-js-foundation/create-named-anonymous-function"
-  ],
-  "bundleDependencies": [
-    "@anio-js-foundation/create-modifier-function",
-    "@anio-js-foundation/create-named-anonymous-function"
   ]
 }
