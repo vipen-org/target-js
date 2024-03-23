@@ -5,7 +5,7 @@ import {fileURLToPath} from "node:url"
 async function loadVirtualModule(context) {
 	let virtual_module = ``
 
-	virtual_module  = `const runtime_data = ` + JSON.stringify(context.target.data, null, 4) + ";\n"
+	virtual_module  = `const runtime_data = ` + JSON.stringify(context.target.data.runtime_data, null, 4) + ";\n"
 	virtual_module += `import {initializeRuntimeFromData} from "@virt-vipen/js-and-web-runtime/bundle"\n`
 	virtual_module += `const runtime = initializeRuntimeFromData(runtime_data);\n`
 
