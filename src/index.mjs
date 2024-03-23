@@ -21,5 +21,11 @@ export async function initializeTarget(context) {
 		case "class": {
 			//await initClassProject(context)
 		} break
+
+		default: {
+			throw new Error(
+				`Unknown target type '${context.type}'.`
+			)
+		}
 	}
 }
