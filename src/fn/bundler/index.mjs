@@ -4,6 +4,13 @@ import resolve from "@rollup/plugin-node-resolve"
 import rollupPluginFactory from "./plugin.mjs"
 
 export default async function(context, {entry, output}) {
+	const cwd = process.cwd()
+
+	//
+	// needed for rollup-node-resolve plugin
+	//
+	process.chdir(context.root)
+
 	const plugin = rollupPluginFactory(context)
 
 	const rollup_options = {
@@ -29,13 +36,6 @@ export default async function(context, {entry, output}) {
 			})
 		}
 	}
-
-	const cwd = process.cwd()
-
-	//
-	// needed for rollup-node-resolve plugin
-	//
-	process.chdir(context.root)
 
 	try {
 		const bundle = await rollup(rollup_options)
