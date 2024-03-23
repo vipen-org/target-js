@@ -1,12 +1,6 @@
 // Code is based off of https://rollupjs.org/plugin-development/#a-simple-example
 import fs from "node:fs/promises"
-import path from "node:path"
 import {fileURLToPath} from "node:url"
-import {createRequire} from "node:module"
-
-const __dirname = path.dirname(
-	fileURLToPath(import.meta.url)
-)
 
 async function loadVirtualModule(context, js_runtime_data) {
 	let virtual_module = ``
