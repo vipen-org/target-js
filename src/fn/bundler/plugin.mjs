@@ -33,7 +33,7 @@ async function loadVirtualModule(context, js_runtime_data) {
 }
 
 export default function(context, js_runtime_data) {
-	return function anioJSBundlerResolverPlugin() {
+	return function VipenJsRuntimePlugin() {
 		return {
 			name: "vipen-js-runtime-plugin",
 
