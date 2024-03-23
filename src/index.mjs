@@ -1,6 +1,7 @@
 import {generateRuntimeData} from "@vipen/js-and-web-runtime/node"
 
 import initLibraryProject from "./type/library/init.mjs"
+import initPackageProject from "./type/package/init.mjs"
 
 export async function initializeTarget(context) {
 	context.target.data = {
@@ -12,12 +13,12 @@ export async function initializeTarget(context) {
 			await initLibraryProject(context)
 		} break
 
-		case "app": {
-			//await initAppProject(context)
+		case "package": {
+			await initPackageProject(context)
 		} break
 
-		case "package": {
-			//await initPackageProject(context)
+		case "app": {
+			//await initAppProject(context)
 		} break
 
 		case "class": {
