@@ -8,7 +8,7 @@ export async function initializeTarget(context) {
 		runtime_data: await generateRuntimeData(context.root)
 	}
 
-	switch (context.type) {
+	switch (context.config.type) {
 		case "library": {
 			await initLibraryProject(context)
 		} break
@@ -27,7 +27,7 @@ export async function initializeTarget(context) {
 
 		default: {
 			throw new Error(
-				`Unknown target type '${context.type}'.`
+				`Unknown target type '${context.config.type}'.`
 			)
 		}
 	}
