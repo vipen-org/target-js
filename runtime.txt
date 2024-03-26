@@ -1,0 +1,5 @@
+Be wary there are three runtime interfaces:
+
+1.) for files inside resources/esmodule/ (only supports loadStaticResource)
+2.) dynamic node runtime
+3.) runtime that gets embedded when bundling the project
