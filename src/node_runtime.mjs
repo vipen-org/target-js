@@ -29,6 +29,7 @@ const runtime = initializeRuntimeFromData(runtime_data)
 // provide named exports for runtime methods
 //
 export function getRuntimeVersion() { return runtime.getRuntimeVersion() + "-node" }
+export function loadStaticResource(...args) { return runtime.loadStaticResource(...args); }
 export function loadResource(...args) { return runtime.loadResource(...args); }
 export function loadProjectPackageJSON() { return runtime.loadProjectPackageJSON(); }
 export function loadVipenConfiguration() { return runtime.loadVipenConfiguration(); }
@@ -36,6 +37,7 @@ export function createDefaultContext() { return runtime.createDefaultContext(); 
 
 export default {
 	getRuntimeVersion,
+	loadStaticResource,
 	loadResource,
 	loadProjectPackageJSON,
 	loadVipenConfiguration,
