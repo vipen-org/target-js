@@ -11,7 +11,7 @@ async function loadVirtualModule(context) {
 
 	const runtime_methods = [
 		"getRuntimeVersion",
-		"loadStaticResource",
+		//"loadStaticResource",
 		"loadResource",
 		"loadProjectPackageJSON",
 		"loadVipenConfiguration",
