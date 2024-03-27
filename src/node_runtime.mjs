@@ -32,6 +32,9 @@ export function getRuntimeVersion() { return runtime.getRuntimeVersion() + "-nod
 // do not export loadStaticResource here
 //export function loadStaticResource(...args) { return runtime.loadStaticResource(...args); }
 export function loadResource(...args) { return runtime.loadResource(...args); }
+
+loadResource.asURL = function loadResourceAsURL(...args) { return runtime.loadResource.asURL(...args); }
+
 export function loadProjectPackageJSON() { return runtime.loadProjectPackageJSON(); }
 export function loadVipenConfiguration() { return runtime.loadVipenConfiguration(); }
 export function createDefaultContext() { return runtime.createDefaultContext(); }

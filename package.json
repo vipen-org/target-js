@@ -23,7 +23,7 @@
     "@anio-node-foundation/fs-scandir": "^2.0.1",
     "@anio-node-foundation/fs-utils": "^2.2.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@vipen/js-and-web-runtime": "^0.13.0",
+    "@vipen/js-and-web-runtime": "^0.14.0",
     "rollup": "^4.13.0"
   },
   "bundledDependencies": [
