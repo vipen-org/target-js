@@ -1,9 +1,11 @@
 import process from "node:process"
 import {rollup} from "rollup"
 import resolve from "@rollup/plugin-node-resolve"
+import terser from "@rollup/plugin-terser"
 import rollupPluginFactory from "./plugin.mjs"
 
-export default async function(context, {entry, output}) {
+export default async function(context, options) {
+	const {entry, output, minified} = options
 	const cwd = process.cwd()
 
 	//
@@ -12,6 +14,12 @@ export default async function(context, {entry, output}) {
 	process.chdir(context.root)
 
 	const plugin = rollupPluginFactory(context)
+
+	const rollup_plugins = [plugin(), resolve()]
+
+	if (minified) {
+		rollup_plugins.push(terser())
+	}
 
 	const rollup_options = {
 		input: entry,
@@ -27,7 +35,7 @@ export default async function(context, {entry, output}) {
 		// to resolve "@vipen/target-js" to a ''virtual'' module
 		// to support loading resources seamlessly
 		//
-		plugins: [plugin(), resolve()],
+		plugins: rollup_plugins,
 
 		onLog(level, error, handler) {
 			context.warnings.push({
