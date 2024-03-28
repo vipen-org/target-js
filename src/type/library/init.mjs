@@ -31,6 +31,7 @@ export default async function(context) {
 	}
 
 	context.build.addFile(`library.mjs`, buildLibraryFile)
+	context.build.addFile(`library.min.mjs`, buildLibraryFile, true)
 
 	for (const sub_module of sub_modules) {
 		context.build.addFile(`submodule/${sub_module}.mjs`, buildSubModuleFile, library_functions, sub_module)

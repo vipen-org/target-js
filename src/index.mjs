@@ -15,6 +15,7 @@ export async function initializeTarget(context) {
 
 			// provide source as javascript module
 			context.build.addFile(`source.mjs`, buildSourceFile, "library.mjs")
+			context.build.addFile(`source.min.mjs`, buildSourceFile, "library.min.mjs")
 		} break
 
 		case "package": {
