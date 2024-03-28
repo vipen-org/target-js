@@ -22,6 +22,7 @@ export async function initializeTarget(context) {
 
 			// provide source as javascript module
 			context.build.addFile(`source.mjs`, buildSourceFile, "package.mjs")
+			context.build.addFile(`source.min.mjs`, buildSourceFile, "package.min.mjs")
 		} break
 
 		case "app": {
