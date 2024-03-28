@@ -19,13 +19,13 @@
     "@anio-js-foundation/create-named-anonymous-function": "^2.0.0",
     "@anio-js-foundation/generate-object-literal": "^1.1.0",
     "@anio-js-foundation/strip-suffix": "^3.0.1",
-    "@anio-node-foundation/fs-find-nearest-file": "^3.0.1",
-    "@anio-node-foundation/fs-scandir": "^2.0.1",
-    "@anio-node-foundation/fs-utils": "^2.2.0",
+    "@anio-node-foundation/fs-find-nearest-file": "^4.0.0",
+    "@anio-node-foundation/fs-scandir": "^3.0.0",
+    "@anio-node-foundation/fs-utils": "^3.0.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@vipen/js-and-web-runtime": "^0.14.0",
-    "rollup": "^4.13.0"
+    "rollup": "^4.13.1"
   },
   "bundledDependencies": [
     "@anio-js-foundation/create-modifier-function",
