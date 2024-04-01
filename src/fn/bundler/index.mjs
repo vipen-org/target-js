@@ -42,7 +42,7 @@ export default async function(vipen_session, options) {
 		plugins: rollup_plugins,
 
 		onLog(level, error, handler) {
-			vipen_session.addWarning("rollup", `[${level}] rollup says ${error.message}`)
+			vipen_session.addWarning("rollup", {message: `[${level}] rollup says ${error.message}`})
 		}
 	}
 
