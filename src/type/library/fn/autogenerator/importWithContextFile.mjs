@@ -2,7 +2,7 @@ import AlphabetIdentifierGenerator from "@anio-js-foundation/alphabet-identifier
 import groupedImport from "../../../../fn/codegenerator/groupedImport.mjs"
 import generateObjectLiteral from "@anio-js-foundation/generate-object-literal"
 
-export default async function(file_path, library_functions) {
+export default async function(vipen_session, file_path, library_functions) {
 	let source = ""
 
 	const generator = new AlphabetIdentifierGenerator()
@@ -81,5 +81,5 @@ export default async function(file_path, library_functions) {
 	source += `\n    return library;\n`
 	source += "}\n"
 
-	return this.autogenerate.warningComment() + source
+	return vipen_session.autogenerate.warningComment() + source
 }

@@ -63,7 +63,7 @@ function addFunction(fn, generator) {
 	return ret
 }
 
-export default async function(path, library_functions) {
+export default async function(vipen_session, path, library_functions) {
 	let source = ``
 
 	source += `import {createDefaultContext} from "@vipen/target-js"
@@ -92,5 +92,5 @@ export function getUsedDefaultContext() {
 	// remove trailing \n
 	source = source.slice(0, source.length - 1)
 
-	return this.autogenerate.warningComment() + source
+	return vipen_session.autogenerate.warningComment() + source
 }

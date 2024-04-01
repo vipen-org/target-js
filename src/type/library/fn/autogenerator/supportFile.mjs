@@ -6,7 +6,7 @@ const __dirname = path.dirname(
 	fileURLToPath(import.meta.url)
 )
 
-async function useDependency(dependency_name) {
+async function useDependency(vipen_session, dependency_name) {
 	//
 	// this only works for @anio-js-foundation modules
 	// because they all have ./dist/package.mjs as entry point
@@ -31,17 +31,17 @@ async function useDependency(dependency_name) {
 
 	source += await fs.readFile(dependency_entry_path)
 
-	return this.autogenerate.warningComment() + source
+	return vipen_session.autogenerate.warningComment() + source
 }
 
-export default async function(file_path, support_file) {
+export default async function(vipen_session, file_path, support_file) {
 	if (support_file === "createModifierFunction.mjs") {
-		return await useDependency.call(this, "@anio-js-foundation/create-modifier-function")
+		return await useDependency(vipen_session, "@anio-js-foundation/create-modifier-function")
 	} else if (support_file === "createNamedAnonymousFunction.mjs") {
-		return await useDependency.call(this, "@anio-js-foundation/create-named-anonymous-function")
+		return await useDependency(vipen_session, "@anio-js-foundation/create-named-anonymous-function")
 	}
 
 	const support_file_path = path.join(__dirname, "support_files", support_file)
 
-	return this.autogenerate.warningComment() + (await fs.readFile(support_file_path))
+	return vipen_session.autogenerate.warningComment() + (await fs.readFile(support_file_path))
 }

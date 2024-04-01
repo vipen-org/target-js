@@ -3,10 +3,7 @@ import groupedImport from "../../../../fn/codegenerator/groupedImport.mjs"
 import namedExports from "../../../../fn/codegenerator/namedExports.mjs"
 import defaultExportObject from "../../../../fn/codegenerator/defaultExportObject.mjs"
 
-import path from "node:path"
-import fs from "node:fs/promises"
-
-export default async function(file_path, library_functions, sub_module) {
+export default async function(vipen_session, file_path, library_functions, sub_module) {
 	const generator = new AlphabetIdentifierGenerator()
 
 	let source = ""
@@ -31,7 +28,7 @@ export default async function(file_path, library_functions, sub_module) {
 		})
 	}
 
-	source += this.autogenerate.warningComment()
+	source += vipen_session.autogenerate.warningComment()
 
 	for (const fn of library_functions) {
 		if (!fn.canonical_path.startsWith(`${sub_module}/`)) continue
@@ -60,7 +57,5 @@ export default async function(file_path, library_functions, sub_module) {
 
 	source += "\n"
 
-	const absolute_path = path.join(this.root, "build", file_path)
-
-	await fs.writeFile(absolute_path, source)
+	return source
 }

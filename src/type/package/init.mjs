@@ -1,6 +1,13 @@
 import buildPackageFile from "./fn/builder/packageFile.mjs"
 
-export default async function(context) {
-	context.build.addFile(`package.mjs`, buildPackageFile)
-	context.build.addFile(`package.min.mjs`, buildPackageFile, true)
+export default async function(vipen_session) {
+	vipen_session.distributables.addFile(`package.mjs`, {
+		generator: buildPackageFile,
+		generator_args: [false]
+	})
+
+	vipen_session.distributables.addFile(`package.min.mjs`, {
+		generator: buildPackageFile,
+		generator_args: [true]
+	})
 }

@@ -4,28 +4,32 @@ import initLibraryProject from "./type/library/init.mjs"
 import initPackageProject from "./type/package/init.mjs"
 import buildSourceFile from "./fn/builder/sourceFile.mjs"
 
-export async function initializeTarget(context) {
-	context.target.data = {
-		runtime_data: await generateRuntimeData(context.root)
+export async function initialize(vipen_session) {
+	const project_root = vipen_session.getProjectRoot()
+	const project_config = vipen_session.getProjectConfig()
+
+	vipen_session.target.data = {
+		runtime_data: await generateRuntimeData(project_root)
 	}
 
-	switch (context.config.type) {
-		case "library": {
-			await initLibraryProject(context)
-
-			// provide source as javascript module
-			context.build.addFile(`source.mjs`, buildSourceFile, "library.mjs")
-			context.build.addFile(`source.min.mjs`, buildSourceFile, "library.min.mjs")
-		} break
-
+	switch (project_config.type) {
 		case "package": {
-			await initPackageProject(context)
+			await initPackageProject(vipen_session)
 
 			// provide source as javascript module
-			context.build.addFile(`source.mjs`, buildSourceFile, "package.mjs")
-			context.build.addFile(`source.min.mjs`, buildSourceFile, "package.min.mjs")
+			vipen_session.distributables.addFile(`source.mjs`, {generator: buildSourceFile, generator_args: ["package.mjs"]})
+			vipen_session.distributables.addFile(`source.min.mjs`, {generator: buildSourceFile, generator_args: ["package.min.mjs"]})
 		} break
 
+		case "library": {
+			await initLibraryProject(vipen_session)
+
+			// provide source as javascript module
+			vipen_session.distributables.addFile(`source.mjs`, {generator: buildSourceFile, generator_args: ["library.mjs"]})
+			vipen_session.distributables.addFile(`source.min.mjs`, {generator: buildSourceFile, generator_args: ["library.min.mjs"]})
+		} break
+
+		/*
 		case "app": {
 			//await initAppProject(context)
 		} break
@@ -33,10 +37,11 @@ export async function initializeTarget(context) {
 		case "class": {
 			//await initClassProject(context)
 		} break
+		*/
 
 		default: {
 			throw new Error(
-				`Unknown target type '${context.config.type}'.`
+				`Unknown target type '${project_config.type}'.`
 			)
 		}
 	}

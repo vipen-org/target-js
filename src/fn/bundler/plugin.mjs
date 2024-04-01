@@ -2,10 +2,10 @@
 import fs from "node:fs/promises"
 import {fileURLToPath} from "node:url"
 
-async function loadVirtualModule(context) {
+async function loadVirtualModule(vipen_session) {
 	let virtual_module = ``
 
-	virtual_module  = `const runtime_data = ` + JSON.stringify(context.target.data.runtime_data, null, 4) + ";\n"
+	virtual_module  = `const runtime_data = ` + JSON.stringify(vipen_session.target.data.runtime_data, null, 4) + ";\n"
 	virtual_module += `import {initializeRuntimeFromData} from "@virt-vipen/js-and-web-runtime/bundle"\n`
 	virtual_module += `const runtime = initializeRuntimeFromData(runtime_data);\n`
 
@@ -35,7 +35,7 @@ async function loadVirtualModule(context) {
 	return virtual_module
 }
 
-export default function(context) {
+export default function(vipen_session) {
 	return function VipenJsRuntimePlugin() {
 		return {
 			name: "vipen-js-runtime-plugin",
@@ -54,7 +54,7 @@ export default function(context) {
 
 			async load(id) {
 				if (id === "@vipen/target-js") {
-					return await loadVirtualModule(context)
+					return await loadVirtualModule(vipen_session)
 				} else if (id === "@virt-vipen/js-and-web-runtime/bundle") {
 					const runtime_bundle_path = fileURLToPath(import.meta.resolve("@vipen/js-and-web-runtime/bundle"))
 

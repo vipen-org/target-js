@@ -12,14 +12,29 @@ import generateSupportFile from "./fn/autogenerator/supportFile.mjs"
 import buildLibraryFile from "./fn/builder/libraryFile.mjs"
 import buildSubModuleFile from "./fn/builder/subModuleFile.mjs"
 
-export default async function(context) {
-	const library_functions = await getExportedLibraryFunctions(context)
+export default async function(vipen_session) {
+	const library_functions = await getExportedLibraryFunctions(vipen_session)
 	const sub_modules = determineSubModules(library_functions)
 
-	context.autogenerate.addFile(`library.mjs`, generateLibraryFile, library_functions)
-	context.autogenerate.addFile(`dict.mjs`, generateDictFile, library_functions)
-	context.autogenerate.addFile(`importWithContext.mjs`, generateImportWithContextFile, library_functions)
-	context.autogenerate.addFile(`index.mjs`, generateIndexFile, library_functions)
+	vipen_session.autogenerate.addFile(`library.mjs`, {
+		generator: generateLibraryFile,
+		generator_args: [library_functions]
+	})
+
+	vipen_session.autogenerate.addFile(`dict.mjs`, {
+		generator: generateDictFile,
+		generator_args: [library_functions]
+	})
+
+	vipen_session.autogenerate.addFile(`importWithContext.mjs`, {
+		generator: generateImportWithContextFile,
+		generator_args: [library_functions]
+	})
+
+	vipen_session.autogenerate.addFile(`index.mjs`, {
+		generator: generateIndexFile,
+		generator_args: [library_functions]
+	})
 
 	for (const support_file of [
 		"wrapFunction.mjs",
@@ -27,16 +42,31 @@ export default async function(context) {
 		"createModifierFunction.mjs",
 		"createNamedAnonymousFunction.mjs"
 	]) {
-		context.autogenerate.addFile(`support_files/${support_file}`, generateSupportFile, support_file)
+		vipen_session.autogenerate.addFile(`support_files/${support_file}`, {
+			generator: generateSupportFile,
+			generator_args: [support_file]
+		})
 	}
 
-	context.build.addFile(`library.mjs`, buildLibraryFile)
-	context.build.addFile(`library.min.mjs`, buildLibraryFile, true)
+	vipen_session.distributables.addFile(`library.mjs`, {
+		generator: buildLibraryFile,
+		generator_args: []
+	})
+
+	vipen_session.distributables.addFile(`library.min.mjs`, {
+		generator: buildLibraryFile,
+		generator_args: [true]
+	})
 
 	for (const sub_module of sub_modules) {
-		context.build.addFile(`submodule/${sub_module}.mjs`, buildSubModuleFile, library_functions, sub_module)
+		vipen_session.distributables.addFile(`submodule/${sub_module}.mjs`, {
+			generator: buildSubModuleFile,
+			generator_args: [library_functions, sub_module]
+		})
 	}
 
+	/*
 	//state.files.autogenerate.push(["NOTICE.txt", createNoticeFile, {autogen_warning_comment: false}])
 	//state.files.autogenerate.push(["VERSION.txt", createVersionFile, {autogen_warning_comment: false}])
+	*/
 }

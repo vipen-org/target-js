@@ -3,7 +3,7 @@ import namedExports from "../../../../fn/codegenerator/namedExports.mjs"
 import groupedImport from "../../../../fn/codegenerator/groupedImport.mjs"
 import defaultExportObject from "../../../../fn/codegenerator/defaultExportObject.mjs"
 
-export default async function(file_path, library_functions) {
+export default async function(vipen_session, file_path, library_functions) {
 	const generator = new AlphabetIdentifierGenerator()
 
 	let source = ""
@@ -72,5 +72,5 @@ export default async function(file_path, library_functions) {
 
 	source += `\n`
 
-	return this.autogenerate.warningComment() + source
+	return vipen_session.autogenerate.warningComment() + source
 }
