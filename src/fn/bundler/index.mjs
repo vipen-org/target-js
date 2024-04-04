@@ -8,7 +8,6 @@ import fs from "node:fs/promises"
 import {dts} from "rollup-plugin-dts"
 
 export default async function(vipen_session, options) {
-	const {entry, minified} = options
 	const cwd = process.cwd()
 
 	//
@@ -20,14 +19,14 @@ export default async function(vipen_session, options) {
 
 	const rollup_plugins = [dts(), plugin(), resolve()]
 
-	if (minified) {
+	if (options.minified) {
 		rollup_plugins.push(terser())
 	}
 
 	const output_file_path = (await generateTemporaryPathName()) + ".mjs"
 
 	const rollup_options = {
-		input: entry,
+		input: options.entry,
 
 		output: {
 			file: output_file_path,
