@@ -25,7 +25,8 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@vipen/js-and-web-runtime": "^0.14.0",
-    "rollup": "^4.13.1"
+    "rollup": "^4.13.1",
+    "rollup-plugin-dts": "^6.1.0"
   },
   "bundledDependencies": [
     "@anio-js-foundation/create-modifier-function",

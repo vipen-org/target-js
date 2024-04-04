@@ -5,6 +5,7 @@ import terser from "@rollup/plugin-terser"
 import rollupPluginFactory from "./plugin.mjs"
 import {generateTemporaryPathName} from "@anio-node-foundation/fs-utils"
 import fs from "node:fs/promises"
+import {dts} from "rollup-plugin-dts"
 
 export default async function(vipen_session, options) {
 	const {entry, minified} = options
@@ -17,7 +18,7 @@ export default async function(vipen_session, options) {
 
 	const plugin = rollupPluginFactory(vipen_session)
 
-	const rollup_plugins = [plugin(), resolve()]
+	const rollup_plugins = [dts(), plugin(), resolve()]
 
 	if (minified) {
 		rollup_plugins.push(terser())
