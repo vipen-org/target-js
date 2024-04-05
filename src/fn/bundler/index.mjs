@@ -17,7 +17,9 @@ export default async function(vipen_session, options) {
 
 	const plugin = rollupPluginFactory(vipen_session)
 
-	const rollup_plugins = options.entry.endsWith("d.ts") ? [dts()] : [plugin(), resolve()]
+	const rollup_plugins = options.entry.endsWith("d.ts") ? [dts({
+		respectExternal: true
+	})] : [plugin(), resolve()]
 
 	if (options.minified) {
 		rollup_plugins.push(terser())
