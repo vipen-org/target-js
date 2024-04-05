@@ -2,6 +2,7 @@
   "name": "@vipen/target-js",
   "version": "0.18.0",
   "description": "Tools needed to build javascript targets.",
+  "typings": "./src/node_runtime.d.ts",
   "exports": {
     ".": "./src/node_runtime.mjs",
     "./vipen-integration": "./src/index.mjs",
