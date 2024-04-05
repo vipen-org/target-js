@@ -9,12 +9,12 @@ async function handleAdditionalEntryPoints(vipen_session, entry_points) {
 
 		vipen_session.distributables.addFile(`additional_entry_points/${output}/package.mjs`, {
 			generator: buildPackageFile,
-			generator_args: [entry_point, false]
+			generator_args: [path.join("build", entry_point), false]
 		})
 
 		vipen_session.distributables.addFile(`additional_entry_points/${output}/package.min.mjs`, {
 			generator: buildPackageFile,
-			generator_args: [entry_point, true]
+			generator_args: [path.join("build", entry_point), true]
 		})
 	}
 }
@@ -24,12 +24,12 @@ export default async function(vipen_session) {
 
 	vipen_session.distributables.addFile(`package.mjs`, {
 		generator: buildPackageFile,
-		generator_args: ["src/index.mjs", false]
+		generator_args: ["build/src/index.mjs", false]
 	})
 
 	vipen_session.distributables.addFile(`package.min.mjs`, {
 		generator: buildPackageFile,
-		generator_args: ["src/index.mjs", true]
+		generator_args: ["build/src/index.mjs", true]
 	})
 
 	const additional_entry_points = project_config?.target?.additional_entry_points
@@ -38,7 +38,7 @@ export default async function(vipen_session) {
 		await handleAdditionalEntryPoints(vipen_session, additional_entry_points)
 	}
 
-	const types_path = path.join(vipen_session.getProjectRoot(), "src", "index.d.ts")
+	const types_path = path.join(vipen_session.getProjectRoot(), "build", "src", "index.d.ts")
 
 	if (!isRegularFile.sync(types_path)) {
 		return
